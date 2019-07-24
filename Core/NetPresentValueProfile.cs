@@ -6,9 +6,9 @@ namespace Core
 {
     public class NetPresentValueProfile
     {
-        public double InitialValue { get; set; }
-        public double[] Values { get; set; }
-        public double Rate { get; set; }
-        public double NPV { get; set; }
+        public decimal InitialValue { get; set; }
+        public decimal[] Values { get; set; }
+        public float Rate { get; set; }
+        public decimal NetPresentValue { get; set; }
     }
 }
