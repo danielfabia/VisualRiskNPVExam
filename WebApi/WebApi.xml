@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:WebApi.Controllers.ComputeController">
+            <summary>
+            API for calculating Present Value (PV), Net Present Value (NPV) and Net Present Value (NPV) Profile
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.ComputeController.PresentValue(System.Decimal,System.Single,System.Int32)">
+            <summary>
+            Compute Present Value (PV)
+            </summary>
+            <param name="value">Future Value</param>
+            <param name="rate">Discount Rate (as percent)</param>
+            <param name="period">Number of Time</param>
+            <returns>PV value</returns>
+        </member>
+        <member name="M:WebApi.Controllers.ComputeController.NetPresentValue(WebApi.Models.NetPresentValueRequestModel)">
+            <summary>
+            Compute Net Present Value (NPV)
+            </summary>
+            <param name="request"></param>
+            <returns>NPV value</returns>
+        </member>
+        <member name="M:WebApi.Controllers.ComputeController.NetPresentValueProfile(WebApi.Models.NetPresentValueProfileModel)">
+            <summary>
+            Compute NPV using single cash flows at different discount rate
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApi.Models.NetPresentValueProfileModel">
+            <summary>
+            NetPresentValueProfileModel
+            </summary>
+        </member>
+        <member name="M:WebApi.Models.NetPresentValueProfileModel.#ctor">
+            <summary>
+            Construtor
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NetPresentValueProfileModel.InitialCost">
+            <summary>
+            Initial Cost
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NetPresentValueProfileModel.Values">
+            <summary>
+            List of Cash Flows
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NetPresentValueProfileModel.LowerBoundRate">
+            <summary>
+            Lower Bound Discount Rate
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NetPresentValueProfileModel.UpperBoundRate">
+            <summary>
+            Upper Bound Discount Rate
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NetPresentValueProfileModel.RateIncrement">
+            <summary>
+            Discount Rate increment
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NetPresentValueProfileModel.Profiles">
+            <summary>
+            List of NPV Profiles
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.NetPresentValueRequestModel">
+            <summary>
+            NetPresentValueRequestModel
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NetPresentValueRequestModel.InitialCost">
+            <summary>
+            Initial Cost
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NetPresentValueRequestModel.Rate">
+            <summary>
+            Discount Rate (as percent)
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NetPresentValueRequestModel.Values">
+            <summary>
+            List of Cash Flows
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.ProfileModel">
+            <summary>
+            ProfileModel
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ProfileModel.Rate">
+            <summary>
+            Discount Rate
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.ProfileModel.Npv">
+            <summary>
+            Net Present Value
+            </summary>
+        </member>
+    </members>
+</doc>
