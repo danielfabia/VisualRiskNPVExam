@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="NgApp\app\data.service.ts" />
+    <None Remove="NgApp\app\data\npvProfile.ts" />
+    <None Remove="NgApp\app\data\profile.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
@@ -13,6 +19,12 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="NgApp\app\data.service.ts" />
+    <TypeScriptCompile Include="NgApp\app\data\npvProfile.ts" />
+    <TypeScriptCompile Include="NgApp\app\data\profile.ts" />
   </ItemGroup>
 
 </Project>
