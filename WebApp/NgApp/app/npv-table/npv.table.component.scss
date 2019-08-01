@@ -1,0 +1,31 @@
+﻿table {
+    width: 70%;
+    margin-left: 10%;
+    margin-right: 15%;
+    text-align: right;
+
+    td, th {
+        border: 1px solid #FFFFFF;
+        padding: 3px 6px;
+    }
+
+    tr:nth-child(even) {
+        background: #D0E4F5;
+    }
+
+    thead {
+        background: #0B6FA4;
+        border-bottom: 5px solid #FFFFFF;
+
+        th {
+            font-weight: bold;
+            color: #FFFFFF;
+            text-align: center;
+            border-left: 2px solid #FFFFFF;
+        }
+
+        th:first-child {
+            border-left: none;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../environments/environment';
 import { NpvProfile } from './data/npvProfile';
@@ -10,21 +10,42 @@ import { NpvProfile } from './data/npvProfile';
 export class DataService {
 
     private url = environment.apiBaseUrl;
-    public npvProfile: NpvProfile;
+
+    private npvProfileShared = new BehaviorSubject<NpvProfile>(new NpvProfile());
+    public obsNpvProfile = this.npvProfileShared.asObservable();
 
     constructor(private http: HttpClient) {
-        this.npvProfile = new NpvProfile();
+        let npvProfile = new NpvProfile();
+        npvProfile.initialCost = 10000;
+        npvProfile.upperBoundRate = 2.00;
+        npvProfile.lowerBoundRate = 1.00;
+        npvProfile.rateIncrement = 0.25;
+        //npvProfile.values.push(1000);
+        //npvProfile.values.push(2000);
+        //npvProfile.values.push(3000);
+        //npvProfile.values.push(1000);
+        //npvProfile.values.push(5000);
+        //npvProfile.values.push(3000);
+        //npvProfile.values.push(1000);
+        //npvProfile.values.push(2000);
+        //npvProfile.values.push(3000);
+
+        this.syncCurrentNpvProfile(npvProfile);
     }
 
-    getNpvProfiles(np: NpvProfile): Observable<NpvProfile> {
+    computeNpvProfiles(np: NpvProfile): Observable<NpvProfile> {
         let params = new HttpParams()
-            .append("InitialValue", np.initialCost.toString())
+            .append("InitialCost", np.initialCost.toString())
             .append("UpperBoundRate", np.upperBoundRate.toString())
             .append("LowerBoundRate", np.lowerBoundRate.toLocaleString())
             .append("RateIncrement", np.rateIncrement.toString());
         np.values.forEach((v: Number) => { params = params.append("Values", v.toString()); });
 
         return this.http.get<NpvProfile>(this.url + "/Compute/npv-profile", { params: params });
+    }
+
+    syncCurrentNpvProfile(np: NpvProfile) {
+        this.npvProfileShared.next(np);
     }
 
     /**

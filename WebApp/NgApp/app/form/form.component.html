@@ -1,0 +1,43 @@
+﻿<form>
+    <div class="form-group row">
+        <label for="initialCost" class="col-sm-3 col-form-label">Initial Cost</label>
+        <div class="col-sm-5">
+            <input [(ngModel)]="npvProfile.initialCost" type="number" id="initialCost" name="initialCost" class="form-control form-control-sm" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="upperRate" class="col-sm-3 col-form-label">Upper Bound Discount Rate</label>
+        <div class="col-sm-5">
+            <input [(ngModel)]="npvProfile.upperBoundRate" type="number" id="upperRate" name="upperRate" class="form-control form-control-sm" step="0.01" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="upperRate" class="col-sm-3 col-form-label">Lower Bound Discount Rate</label>
+        <div class="col-sm-5">
+            <input [(ngModel)]="npvProfile.lowerBoundRate" type="number" id="lowerRate" name="lowerRate" class="form-control form-control-sm" step="0.01" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="increment" class="col-sm-3 col-form-label">Increment</label>
+        <div class="col-sm-5">
+            <input [(ngModel)]="npvProfile.rateIncrement" type="number" id="increment" name="increment" class="form-control form-control-sm" step="0.01" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm-3 col-form-label">Cash Flows</label>
+        <div class="col-sm-5">
+            <div class="form-group" *ngFor="let c of npvProfile.values; let i = index">
+                <input [(ngModel)]="npvProfile.values[i]" type="number" name="values{{i}}" class="form-control form-control-sm" />
+                <button type="button" class="btn btn-secondary btn-sm" (click)="removeCashFlow(i)" title="Delete Cash Flow">-</button>
+                <!--<i class="fa fa-minus-square"></i>-->
+            </div>            
+            <div class="form-group">
+                <button type="button" class="btn btn-secondary btn-sm btn-cf-add" (click)="addCashFlow()" >Add Cash Flow</button>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="button" class="btn btn-primary" (click)="onCalculate()">Calculate</button>
+    </div>
+</form>
+<npv-table [npv]="npvProfile"></npv-table>

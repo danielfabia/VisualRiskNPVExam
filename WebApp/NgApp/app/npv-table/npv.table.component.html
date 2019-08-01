@@ -1,0 +1,20 @@
+﻿<div *ngIf="npvProfile && npvProfile.profiles && npvProfile.profiles.length > 0">
+    <table>
+        <thead>
+            <tr>
+                <!--<th>Cash Flow</th>
+                <th>Initial Value</th>-->
+                <th>Discount Rate</th>
+                <th>Net Present Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of npvProfile.profiles">
+                <!--<td>{{ npvProfile.values }}</td>
+                <td>{{ npvProfile.initialCost | number:'1.2-4' }}</td>-->
+                <td>{{ p.rate | percent:'1.2-3' }}</td>
+                <td>{{ p.npv | number:'1.2-2' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
