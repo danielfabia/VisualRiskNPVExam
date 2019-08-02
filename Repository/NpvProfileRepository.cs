@@ -20,22 +20,38 @@ namespace Repository
 
         public IEnumerable<NpvProfile> GetAll()
         {
-            var list = context.NpvProfiles
-                        .Include(_ => _.CashFlows)
-                        .Include(_ => _.NPVs)
-                        .ToList();
+            var query = context.NpvProfiles
+                            .Include(_ => _.CashFlows)
+                            .Include(_ => _.NPVs);
 
-            return list;
+            return query.ToList();
+        }
+
+        public async Task<IEnumerable<NpvProfile>> GetAllAsync()
+        {
+            var query = context.NpvProfiles
+                            .Include(_ => _.CashFlows)
+                            .Include(_ => _.NPVs);
+
+            return await query.ToListAsync();
         }
 
         public IEnumerable<NpvProfile> GetById(int id)
         {
-            var list = context.NpvProfiles.Where(_ => _.Id == id)
+            var query = context.NpvProfiles.Where(_ => _.Id == id)
                         .Include(_ => _.CashFlows)
-                        .Include(_ => _.NPVs)
-                        .ToList();
+                        .Include(_ => _.NPVs);
+                        
+            return query.ToList(); 
+        }
 
-            return list;
+        public async Task<IEnumerable<NpvProfile>> GetByIdAsync(int id)
+        {
+            var query = context.NpvProfiles.Where(_ => _.Id == id)
+                        .Include(_ => _.CashFlows)
+                        .Include(_ => _.NPVs);
+
+            return await query.ToListAsync();
         }
 
         public NpvProfile Add(NpvProfile newProfile)
@@ -46,7 +62,20 @@ namespace Repository
             return newProfile;
         }
 
+        public async Task<NpvProfile> AddAsync(NpvProfile newProfile)
+        {
+            context.Add(newProfile);
+            await context.SaveChangesAsync();
+
+            return newProfile;
+        }
+
         public NpvProfile Update(NpvProfile newProfile)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<NpvProfile> UpdateAsync(NpvProfile newProfile)
         {
             throw new NotImplementedException();
         }
