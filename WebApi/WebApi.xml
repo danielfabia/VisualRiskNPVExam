@@ -9,6 +9,11 @@
             API for calculating Present Value (PV), Net Present Value (NPV) and Net Present Value (NPV) Profile
             </summary>
         </member>
+        <member name="M:WebApi.Controllers.ComputeController.#ctor(AutoMapper.IMapper)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
         <member name="M:WebApi.Controllers.ComputeController.PresentValue(System.Decimal,System.Single,System.Int32)">
             <summary>
             Compute Present Value (PV)
@@ -18,76 +23,185 @@
             <param name="period">Number of Time</param>
             <returns>PV value</returns>
         </member>
-        <member name="M:WebApi.Controllers.ComputeController.NetPresentValue(WebApi.Models.NetPresentValueRequestModel)">
+        <member name="M:WebApi.Controllers.ComputeController.NetPresentValue(WebApi.Models.NpvRequestModel)">
             <summary>
             Compute Net Present Value (NPV)
             </summary>
             <param name="request"></param>
             <returns>NPV value</returns>
         </member>
-        <member name="M:WebApi.Controllers.ComputeController.NetPresentValueProfile(WebApi.Models.NetPresentValueProfileModel)">
+        <member name="M:WebApi.Controllers.ComputeController.NetPresentValueProfile(WebApi.Models.NpvProfileRequestModel)">
             <summary>
             Compute NPV using single cash flows at different discount rate
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="T:WebApi.Models.NetPresentValueProfileModel">
+        <member name="T:WebApi.Controllers.NpvProfileController">
             <summary>
-            NetPresentValueProfileModel
+            API for saving NPV Profile data
             </summary>
         </member>
-        <member name="M:WebApi.Models.NetPresentValueProfileModel.#ctor">
+        <member name="M:WebApi.Controllers.NpvProfileController.#ctor(Repository.INpvProfileRepository,AutoMapper.IMapper)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.NpvProfileController.Get">
+            <summary>
+            Get all NPV profiles.
+            </summary>
+            <returns>List of NpvProfileModel</returns>
+        </member>
+        <member name="M:WebApi.Controllers.NpvProfileController.Get(System.Int32)">
+            <summary>
+            Get NPV profiles by ID
+            </summary>
+            <param name="id">Id</param>
+            <returns>Return a single NpvProfileModel</returns>
+        </member>
+        <member name="M:WebApi.Controllers.NpvProfileController.GetNpvProfileNames">
+            <summary>
+            Get NPV profiles with ID and name only
+            </summary>
+            <returns>List of NpvProfileModel</returns>
+        </member>
+        <member name="M:WebApi.Controllers.NpvProfileController.AddProfile(WebApi.Models.NpvProfileModel,System.String)">
+            <summary>
+            Add new NPV profile
+            </summary>
+            <param name="model">NpvProfileModel</param>
+            <param name="name">Name of profile</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.NpvProfileController.UpdateProfile(WebApi.Models.NpvProfileSavedModel)">
+            <summary>
+            Update a NPV profile.
+            </summary>
+            <param name="model">NpvProfileModel</param>
+            <returns></returns>
+        </member>
+        <member name="T:WebApi.Models.NpvProfileModel">
+            <summary>
+            NpvProfileModel
+            </summary>
+        </member>
+        <member name="M:WebApi.Models.NpvProfileModel.#ctor">
             <summary>
             Construtor
             </summary>
         </member>
-        <member name="P:WebApi.Models.NetPresentValueProfileModel.InitialCost">
+        <member name="P:WebApi.Models.NpvProfileModel.InitialCost">
             <summary>
             Initial Cost
             </summary>
         </member>
-        <member name="P:WebApi.Models.NetPresentValueProfileModel.Values">
+        <member name="P:WebApi.Models.NpvProfileModel.Values">
             <summary>
             List of Cash Flows
             </summary>
         </member>
-        <member name="P:WebApi.Models.NetPresentValueProfileModel.LowerBoundRate">
+        <member name="P:WebApi.Models.NpvProfileModel.LowerBoundRate">
             <summary>
             Lower Bound Discount Rate
             </summary>
         </member>
-        <member name="P:WebApi.Models.NetPresentValueProfileModel.UpperBoundRate">
+        <member name="P:WebApi.Models.NpvProfileModel.UpperBoundRate">
             <summary>
             Upper Bound Discount Rate
             </summary>
         </member>
-        <member name="P:WebApi.Models.NetPresentValueProfileModel.RateIncrement">
+        <member name="P:WebApi.Models.NpvProfileModel.RateIncrement">
             <summary>
             Discount Rate increment
             </summary>
         </member>
-        <member name="P:WebApi.Models.NetPresentValueProfileModel.Profiles">
+        <member name="P:WebApi.Models.NpvProfileModel.Profiles">
             <summary>
             List of NPV Profiles
             </summary>
         </member>
-        <member name="T:WebApi.Models.NetPresentValueRequestModel">
+        <member name="T:WebApi.Models.NpvProfileNameModel">
             <summary>
-            NetPresentValueRequestModel
+            NpvProfileNamesModel
             </summary>
         </member>
-        <member name="P:WebApi.Models.NetPresentValueRequestModel.InitialCost">
+        <member name="P:WebApi.Models.NpvProfileNameModel.Id">
+            <summary>
+            Id of the saved NpvProfile
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NpvProfileNameModel.Name">
+            <summary>
+            Name of the saved NpvProfile
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.NpvProfileRequestModel">
+            <summary>
+            NetPresentValueProfileModel
+            </summary>
+        </member>
+        <member name="M:WebApi.Models.NpvProfileRequestModel.#ctor">
+            <summary>
+            Construtor
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NpvProfileRequestModel.InitialCost">
             <summary>
             Initial Cost
             </summary>
         </member>
-        <member name="P:WebApi.Models.NetPresentValueRequestModel.Rate">
+        <member name="P:WebApi.Models.NpvProfileRequestModel.Values">
+            <summary>
+            List of Cash Flows
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NpvProfileRequestModel.LowerBoundRate">
+            <summary>
+            Lower Bound Discount Rate
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NpvProfileRequestModel.UpperBoundRate">
+            <summary>
+            Upper Bound Discount Rate
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NpvProfileRequestModel.RateIncrement">
+            <summary>
+            Discount Rate increment
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.NpvProfileSavedModel">
+            <summary>
+            NpvProfileSavedModel
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NpvProfileSavedModel.Id">
+            <summary>
+            Id of the saved NpvProfile
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NpvProfileSavedModel.Name">
+            <summary>
+            Name of the saved NpvProfile
+            </summary>
+        </member>
+        <member name="T:WebApi.Models.NpvRequestModel">
+            <summary>
+            NpvRequestModel
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NpvRequestModel.InitialCost">
+            <summary>
+            Initial Cost
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NpvRequestModel.Rate">
             <summary>
             Discount Rate (as percent)
             </summary>
         </member>
-        <member name="P:WebApi.Models.NetPresentValueRequestModel.Values">
+        <member name="P:WebApi.Models.NpvRequestModel.Values">
             <summary>
             List of Cash Flows
             </summary>

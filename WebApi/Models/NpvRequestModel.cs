@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 namespace WebApi.Models
 {
     /// <summary>
-    /// NetPresentValueRequestModel
+    /// NpvRequestModel
     /// </summary>
-    public class NetPresentValueRequestModel
+    public class NpvRequestModel
     {
         /// <summary>
         /// Initial Cost

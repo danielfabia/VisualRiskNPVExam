@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
+using AutoMapper;
 using Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +18,15 @@ namespace WebApi.Controllers
     [ApiController]
     public class ComputeController : ControllerBase
     {
+        private readonly IMapper mapper;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public ComputeController(IMapper mapper)
+        {
+            this.mapper = mapper;
+        }
         /// <summary>
         /// Compute Present Value (PV)
         /// </summary>
@@ -42,7 +52,7 @@ namespace WebApi.Controllers
         /// <returns>NPV value</returns>
         [HttpGet]
         [Route("npv")]
-        public ActionResult NetPresentValue([FromQuery]NetPresentValueRequestModel request)
+        public ActionResult NetPresentValue([FromQuery]NpvRequestModel request)
         {
             // TODO: model validation
 
@@ -58,7 +68,7 @@ namespace WebApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("npv-profile")]
-        public ActionResult NetPresentValueProfile([FromQuery]NetPresentValueProfileModel model)
+        public ActionResult NetPresentValueProfile([FromQuery]NpvProfileRequestModel model)
         {
             // TODO: model validation
 
@@ -66,12 +76,14 @@ namespace WebApi.Controllers
                                                             model.LowerBoundRate, model.UpperBoundRate, 
                                                             model.RateIncrement);
 
+            var profileModel = mapper.Map<NpvProfileModel>(model);
+
             npvProfiles.ToList().ForEach(p =>
             {
-                model.Profiles.Add(new ProfileModel { Rate = p.Rate, Npv = Math.Round(p.NetPresentValue, 4) });
+                profileModel.Profiles.Add(new ProfileModel { Rate = p.Rate, Npv = Math.Round(p.NetPresentValue, 4) });
             });
 
-            return Ok(model);
+            return Ok(profileModel);
         }
     }
 }

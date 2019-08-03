@@ -8,14 +8,13 @@ namespace WebApi.Models
     /// <summary>
     /// NetPresentValueProfileModel
     /// </summary>
-    public class NetPresentValueProfileModel
+    public class NpvProfileRequestModel
     {
         /// <summary>
         /// Construtor
         /// </summary>
-        public NetPresentValueProfileModel()
+        public NpvProfileRequestModel()
         {
-            Profiles = new List<ProfileModel>();
         }
 
         /// <summary>
@@ -38,9 +37,5 @@ namespace WebApi.Models
         /// Discount Rate increment
         /// </summary>
         public float RateIncrement { get; set; }
-        /// <summary>
-        /// List of NPV Profiles
-        /// </summary>
-        public List<ProfileModel> Profiles { get; set; }
     }
 }

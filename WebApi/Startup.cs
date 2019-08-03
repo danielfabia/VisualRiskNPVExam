@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
+using Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Repository;
 
 namespace NPVWebApi
 {
@@ -41,6 +46,14 @@ namespace NPVWebApi
 
                 setupAction.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "WebApi.xml"));
             });
+
+            services.AddDbContext<DataContext>(cfg =>
+            {
+                cfg.UseSqlServer(Configuration.GetConnectionString("NPVConnectionString"));
+            });
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddTransient<INpvProfileRepository, NpvProfileRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
