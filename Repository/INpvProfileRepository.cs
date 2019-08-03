@@ -10,7 +10,7 @@ namespace Repository
     public interface INpvProfileRepository
     {
         IEnumerable<NpvProfile> GetAll();        
-        IEnumerable<NpvProfile> GetById(int id);
+        NpvProfile GetById(int id);
         NpvProfile Add(NpvProfile newProfile);
         NpvProfile Update(NpvProfile newProfile);
 
@@ -18,7 +18,7 @@ namespace Repository
         // Async methods
 
         Task<IEnumerable<NpvProfile>> GetAllAsync();
-        Task<IEnumerable<NpvProfile>> GetByIdAsync(int id);
+        Task<NpvProfile> GetByIdAsync(int id);
         Task<NpvProfile> AddAsync(NpvProfile newProfile);
         Task<NpvProfile> UpdateAsync(NpvProfile newProfile);
     }

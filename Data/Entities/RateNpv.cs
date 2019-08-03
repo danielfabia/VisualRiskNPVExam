@@ -11,5 +11,6 @@ namespace Data.Entities
         public int Id { get; set; }
         public float Rate { get; set; }
         public decimal Npv { get; set; }
+        public int NpvProfileId { get; set; }
     }
 }

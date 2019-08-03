@@ -36,22 +36,22 @@ namespace Repository
             return await query.ToListAsync();
         }
 
-        public IEnumerable<NpvProfile> GetById(int id)
+        public NpvProfile GetById(int id)
         {
             var query = context.NpvProfiles.Where(_ => _.Id == id)
                         .Include(_ => _.CashFlows)
                         .Include(_ => _.NPVs);
-                        
-            return query.ToList(); 
+
+            return query.FirstOrDefault();
         }
 
-        public async Task<IEnumerable<NpvProfile>> GetByIdAsync(int id)
+        public async Task<NpvProfile> GetByIdAsync(int id)
         {
             var query = context.NpvProfiles.Where(_ => _.Id == id)
                         .Include(_ => _.CashFlows)
                         .Include(_ => _.NPVs);
 
-            return await query.ToListAsync();
+            return await query.FirstOrDefaultAsync();
         }
 
         public NpvProfile Add(NpvProfile newProfile)
@@ -70,14 +70,61 @@ namespace Repository
             return newProfile;
         }
 
-        public NpvProfile Update(NpvProfile newProfile)
+        public NpvProfile Update(NpvProfile updatedProfile)
         {
-            throw new NotImplementedException();
+            // delete related records first
+            DeleteNpvProfileRelations(updatedProfile.Id);
+
+            context.Entry(updatedProfile).State = EntityState.Modified;
+
+            updatedProfile.CashFlows.ToList().ForEach(_ =>
+            {
+                context.Attach(_);
+            });
+
+            updatedProfile.NPVs.ToList().ForEach(_ =>
+            {
+                context.Attach(_);
+            });
+
+            context.SaveChanges();
+
+            return updatedProfile;
         }
 
-        public Task<NpvProfile> UpdateAsync(NpvProfile newProfile)
+        public async Task<NpvProfile> UpdateAsync(NpvProfile updatedProfile)
         {
-            throw new NotImplementedException();
+            // delete related records first
+            await DeleteNpvProfileRelations(updatedProfile.Id);
+
+            context.Entry(updatedProfile).State = EntityState.Modified;
+
+            updatedProfile.CashFlows.ToList().ForEach(_ =>
+            {
+                context.Attach(_);
+            });
+
+            updatedProfile.NPVs.ToList().ForEach(_ =>
+            {
+                context.Attach(_);
+            });
+
+            await context.SaveChangesAsync();
+
+            return updatedProfile;
+        }
+
+        private async Task<int> DeleteNpvProfileRelations(int npvProfileId)
+        {
+            var cashFlows = await context.CashFlows.Where(_ => _.NpvProfileId == npvProfileId).ToListAsync();
+            context.CashFlows.RemoveRange(cashFlows);
+
+            var npvs = await context.RateNpvs.Where(_ => _.NpvProfileId == npvProfileId).ToListAsync();
+            context.RateNpvs.RemoveRange(npvs);
+
+            var result = await context.SaveChangesAsync();
+
+            return result;
         }
     }
 }

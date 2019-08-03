@@ -10,5 +10,6 @@ namespace Data.Entities
     {
         public int Id { get; set; }
         public decimal Value { get; set; }
+        public int NpvProfileId { get; set; }
     }
 }
