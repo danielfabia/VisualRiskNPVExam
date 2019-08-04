@@ -55,6 +55,9 @@ namespace Core
         public static IEnumerable<NetPresentValueProfile> NetPresentValueProfiles(decimal initialValue, decimal[] values,
             float lowerBoundRate, float upperBoundRate, float rateIncrement)
         {
+            if (rateIncrement <= 0)
+                throw new ArgumentException("RateIncrement cannot be equal or less than zero.");
+
             var rates = new List<float>();
             for (float rate = lowerBoundRate; rate <= upperBoundRate; rate += rateIncrement)
             {

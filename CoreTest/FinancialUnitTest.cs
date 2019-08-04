@@ -99,5 +99,18 @@ namespace CoreTest
             Assert.AreEqual(-5622.32M, Math.Round(list[1].NetPresentValue, 2));
             Assert.AreEqual(-5646.15M, Math.Round(list[2].NetPresentValue, 2));
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void NetPresentValueProfilesWithZeroRateIncrement()
+        {
+            var initialValue = 10000;
+            var values = new decimal[] { 1000, 1500, 2000 };
+            var lowerRate = 1.00F;
+            var upperRate = 1.50F;
+            var increment = 0;
+
+            var list = Financial.NetPresentValueProfiles(initialValue, values, lowerRate, upperRate, increment).ToList();
+        }
     }
 }
