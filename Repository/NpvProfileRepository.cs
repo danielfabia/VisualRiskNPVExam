@@ -21,8 +21,8 @@ namespace Repository
         public IEnumerable<NpvProfile> GetAll()
         {
             var query = context.NpvProfiles
-                            .Include(_ => _.CashFlows)
-                            .Include(_ => _.NPVs);
+                            .Include(n => n.CashFlows)
+                            .Include(n => n.NPVs);
 
             return query.ToList();
         }
@@ -38,9 +38,9 @@ namespace Repository
 
         public NpvProfile GetById(int id)
         {
-            var query = context.NpvProfiles.Where(_ => _.Id == id)
-                        .Include(_ => _.CashFlows)
-                        .Include(_ => _.NPVs);
+            var query = context.NpvProfiles.Where(n => n.Id == id)
+                        .Include(n => n.CashFlows)
+                        .Include(n => n.NPVs);
 
             return query.FirstOrDefault();
         }
@@ -77,14 +77,14 @@ namespace Repository
 
             context.Entry(updatedProfile).State = EntityState.Modified;
 
-            updatedProfile.CashFlows.ToList().ForEach(_ =>
+            updatedProfile.CashFlows.ToList().ForEach(n =>
             {
-                context.Attach(_);
+                context.Attach(n);
             });
 
-            updatedProfile.NPVs.ToList().ForEach(_ =>
+            updatedProfile.NPVs.ToList().ForEach(n =>
             {
-                context.Attach(_);
+                context.Attach(n);
             });
 
             context.SaveChanges();
@@ -116,10 +116,10 @@ namespace Repository
 
         private async Task<int> DeleteNpvProfileRelations(int npvProfileId)
         {
-            var cashFlows = await context.CashFlows.Where(_ => _.NpvProfileId == npvProfileId).ToListAsync();
+            var cashFlows = await context.CashFlows.Where(c => c.NpvProfileId == npvProfileId).ToListAsync();
             context.CashFlows.RemoveRange(cashFlows);
 
-            var npvs = await context.RateNpvs.Where(_ => _.NpvProfileId == npvProfileId).ToListAsync();
+            var npvs = await context.RateNpvs.Where(r => r.NpvProfileId == npvProfileId).ToListAsync();
             context.RateNpvs.RemoveRange(npvs);
 
             var result = await context.SaveChangesAsync();
