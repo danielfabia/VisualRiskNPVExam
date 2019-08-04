@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "../$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>    \r\n    <npv-form></npv-form>\r\n    <br/>\r\n</div>"
+module.exports = "<div>    \r\n    <npv-list></npv-list>\r\n    <npv-form></npv-form>\r\n    <br/>\r\n</div>"
 
 /***/ }),
 
@@ -41,7 +41,18 @@ module.exports = "<div>    \r\n    <npv-form></npv-form>\r\n    <br/>\r\n</div>"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<form>\r\n    <div class=\"form-group row\">\r\n        <label for=\"initialCost\" class=\"col-sm-3 col-form-label\">Initial Cost</label>\r\n        <div class=\"col-sm-5\">\r\n            <input [(ngModel)]=\"npvProfile.initialCost\" type=\"number\" id=\"initialCost\" name=\"initialCost\" class=\"form-control form-control-sm\" />\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n        <label for=\"upperRate\" class=\"col-sm-3 col-form-label\">Upper Bound Discount Rate</label>\r\n        <div class=\"col-sm-5\">\r\n            <input [(ngModel)]=\"npvProfile.upperBoundRate\" type=\"number\" id=\"upperRate\" name=\"upperRate\" class=\"form-control form-control-sm\" step=\"0.01\" />\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n        <label for=\"upperRate\" class=\"col-sm-3 col-form-label\">Lower Bound Discount Rate</label>\r\n        <div class=\"col-sm-5\">\r\n            <input [(ngModel)]=\"npvProfile.lowerBoundRate\" type=\"number\" id=\"lowerRate\" name=\"lowerRate\" class=\"form-control form-control-sm\" step=\"0.01\" />\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n        <label for=\"increment\" class=\"col-sm-3 col-form-label\">Increment</label>\r\n        <div class=\"col-sm-5\">\r\n            <input [(ngModel)]=\"npvProfile.rateIncrement\" type=\"number\" id=\"increment\" name=\"increment\" class=\"form-control form-control-sm\" step=\"0.01\" />\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n        <label for=\"\" class=\"col-sm-3 col-form-label\">Cash Flows</label>\r\n        <div class=\"col-sm-5\">\r\n            <div class=\"form-group\" *ngFor=\"let c of npvProfile.values; let i = index\">\r\n                <input [(ngModel)]=\"npvProfile.values[i]\" type=\"number\" name=\"values{{i}}\" class=\"form-control form-control-sm\" />\r\n                <button type=\"button\" class=\"btn btn-secondary btn-sm\" (click)=\"removeCashFlow(i)\" title=\"Delete Cash Flow\">-</button>\r\n                <!--<i class=\"fa fa-minus-square\"></i>-->\r\n            </div>            \r\n            <div class=\"form-group\">\r\n                <button type=\"button\" class=\"btn btn-secondary btn-sm btn-cf-add\" (click)=\"addCashFlow()\" >Add Cash Flow</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"onCalculate()\">Calculate</button>\r\n    </div>\r\n</form>\r\n<npv-table [npv]=\"npvProfile\"></npv-table>"
+module.exports = "<form>\r\n    <div class=\"form-group row\">\r\n        <label for=\"initialCost\" class=\"col-sm-3 col-form-label\">Initial Cost</label>\r\n        <div class=\"col-sm-5\">\r\n            <input [(ngModel)]=\"npvProfile.initialCost\" type=\"number\" id=\"initialCost\" name=\"initialCost\" class=\"form-control form-control-sm\" />\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n        <label for=\"upperRate\" class=\"col-sm-3 col-form-label\">Upper Bound Discount Rate</label>\r\n        <div class=\"col-sm-5\">\r\n            <input [(ngModel)]=\"npvProfile.upperBoundRate\" type=\"number\" id=\"upperRate\" name=\"upperRate\" class=\"form-control form-control-sm\" step=\"0.01\" />\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n        <label for=\"upperRate\" class=\"col-sm-3 col-form-label\">Lower Bound Discount Rate</label>\r\n        <div class=\"col-sm-5\">\r\n            <input [(ngModel)]=\"npvProfile.lowerBoundRate\" type=\"number\" id=\"lowerRate\" name=\"lowerRate\" class=\"form-control form-control-sm\" step=\"0.01\" />\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n        <label for=\"increment\" class=\"col-sm-3 col-form-label\">Increment</label>\r\n        <div class=\"col-sm-5\">\r\n            <input [(ngModel)]=\"npvProfile.rateIncrement\" type=\"number\" id=\"increment\" name=\"increment\" class=\"form-control form-control-sm\" step=\"0.01\" />\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group row\">\r\n        <label for=\"\" class=\"col-sm-3 col-form-label\">Cash Flows</label>\r\n        <div class=\"col-sm-5\">\r\n            <div class=\"form-group\" *ngFor=\"let c of npvProfile.values; let i = index; trackBy:trackByFn\">\r\n                <input [(ngModel)]=\"npvProfile.values[i]\" type=\"number\" name=\"values{{i}}\" class=\"form-control form-control-sm\" />\r\n                <button type=\"button\" class=\"btn btn-secondary btn-sm\" (click)=\"removeCashFlow(i)\" title=\"Delete Cash Flow\">-</button>\r\n                <!--<i class=\"fa fa-minus-square\"></i>-->\r\n            </div>            \r\n            <div class=\"form-group\">\r\n                <button type=\"button\" class=\"btn btn-secondary btn-sm btn-cf-add\" (click)=\"addCashFlow()\" >Add Cash Flow</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"onCalculate()\">Calculate</button>\r\n    </div>\r\n</form>\r\n<npv-table [npv]=\"npvProfile\"></npv-table>"
+
+/***/ }),
+
+/***/ "../node_modules/raw-loader/index.js!./app/list/list.component.html":
+/*!*****************************************************************!*\
+  !*** ../node_modules/raw-loader!./app/list/list.component.html ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"list\">\r\n    <div class=\"new form-group\">\r\n        <button (click)=\"onSave()\" type=\"button\" class=\"btn btn-primary btn-sm\" style=\"width:20%\">Save</button>\r\n        <button (click)=\"onNew()\" type=\"button\" class=\"btn btn-secondary btn-sm\" style=\"margin-left:10px;\">New</button>\r\n    </div>\r\n    <div class=\"select form-group row\">\r\n        <label for=\"npvProfileList\" class=\"col-form-label col-sm-5\" style=\"text-align: right\">Load Saved Profile</label>\r\n        <select [(ngModel)]=\"selectedNpvProfile\" (ngModelChange)=\"onProfileSelected($event)\" id=\"npvProfileList\" name=\"npvProfileList\" class=\"form-control col-sm-5\">\r\n            <option *ngFor=\"let n of npvProfileList\" [ngValue]=\"n\">{{n.name}}</option>\r\n        </select>\r\n    </div>\r\n</div>\r\n<ng-template #content let-modal>\r\n    <div class=\"modal-header\">\r\n        <h4 class=\"modal-title\" id=\"modal-basic-title\">Save</h4>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"modal.dismiss('x')\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n        <form>\r\n            <div class=\"form-group\">\r\n                <label for=\"name\">Name</label>\r\n                <div class=\"input-group\">\r\n                    <input [(ngModel)]=\"newNpvProfileName\" id=\"name\" class=\"form-control\" placeholder=\"Name of NPV Profile\" name=\"name\" />\r\n                </div>\r\n            </div>\r\n        </form>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"modal.close('ok')\">Ok</button>\r\n        <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"modal.close('cancel')\">Cancel</button>\r\n    </div>\r\n</ng-template>"
 
 /***/ }),
 
@@ -93,7 +104,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJOZ0FwcC9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIn0= */"
+module.exports = "div:first-child {\n  margin-top: 20px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIk5nQXBwL2FwcC9UOlxcUHJvamVjdHNcXFZpc3VhbFJpc2tcXFdlYkFwcC9OZ0FwcFxcYXBwXFxhcHAuY29tcG9uZW50LnNjc3MiLCJOZ0FwcC9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksZ0JBQUE7QUNDSiIsImZpbGUiOiJOZ0FwcC9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiZGl2OmZpcnN0LWNoaWxkIHtcclxuICAgIG1hcmdpbi10b3A6IDIwcHg7XHJcbn0iLCJkaXY6Zmlyc3QtY2hpbGQge1xuICBtYXJnaW4tdG9wOiAyMHB4O1xufSJdfQ== */"
 
 /***/ }),
 
@@ -150,11 +161,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "../node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "../node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "../node_modules/@angular/common/fesm2015/http.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-routing.module */ "./app/app-routing.module.ts");
-/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./data.service */ "./app/data.service.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./app/app.component.ts");
-/* harmony import */ var _form_form_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./form/form.component */ "./app/form/form.component.ts");
-/* harmony import */ var _npv_table_npv_table_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./npv-table/npv.table.component */ "./app/npv-table/npv.table.component.ts");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "../node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app-routing.module */ "./app/app-routing.module.ts");
+/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./data.service */ "./app/data.service.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./app/app.component.ts");
+/* harmony import */ var _form_form_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./form/form.component */ "./app/form/form.component.ts");
+/* harmony import */ var _npv_table_npv_table_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./npv-table/npv.table.component */ "./app/npv-table/npv.table.component.ts");
+/* harmony import */ var _list_list_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./list/list.component */ "./app/list/list.component.ts");
+
+
 
 
 
@@ -170,20 +185,22 @@ let AppModule = class AppModule {
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
         declarations: [
-            _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
-            _form_form_component__WEBPACK_IMPORTED_MODULE_8__["FormComponent"],
-            _npv_table_npv_table_component__WEBPACK_IMPORTED_MODULE_9__["NpvTableComponent"]
+            _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
+            _form_form_component__WEBPACK_IMPORTED_MODULE_9__["FormComponent"],
+            _npv_table_npv_table_component__WEBPACK_IMPORTED_MODULE_10__["NpvTableComponent"],
+            _list_list_component__WEBPACK_IMPORTED_MODULE_11__["ListComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-            _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"]
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModule"]
         ],
         providers: [
-            _data_service__WEBPACK_IMPORTED_MODULE_6__["DataService"]
+            _data_service__WEBPACK_IMPORTED_MODULE_7__["DataService"]
         ],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
     })
 ], AppModule);
 
@@ -220,20 +237,10 @@ let DataService = class DataService {
         this.npvProfileShared = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](new _data_npvProfile__WEBPACK_IMPORTED_MODULE_5__["NpvProfile"]());
         this.obsNpvProfile = this.npvProfileShared.asObservable();
         let npvProfile = new _data_npvProfile__WEBPACK_IMPORTED_MODULE_5__["NpvProfile"]();
-        npvProfile.initialCost = 10000;
-        npvProfile.upperBoundRate = 2.00;
-        npvProfile.lowerBoundRate = 1.00;
-        npvProfile.rateIncrement = 0.25;
-        //npvProfile.values.push(1000);
-        //npvProfile.values.push(2000);
-        //npvProfile.values.push(3000);
-        //npvProfile.values.push(1000);
-        //npvProfile.values.push(5000);
-        //npvProfile.values.push(3000);
-        //npvProfile.values.push(1000);
-        //npvProfile.values.push(2000);
-        //npvProfile.values.push(3000);
         this.syncCurrentNpvProfile(npvProfile);
+    }
+    syncCurrentNpvProfile(np) {
+        this.npvProfileShared.next(np);
     }
     computeNpvProfiles(np) {
         let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
@@ -244,14 +251,26 @@ let DataService = class DataService {
         np.values.forEach((v) => { params = params.append("Values", v.toString()); });
         return this.http.get(this.url + "/Compute/npv-profile", { params: params });
     }
-    syncCurrentNpvProfile(np) {
-        this.npvProfileShared.next(np);
+    getSavedNpvProfiles() {
+        return this.http.get(this.url + "/NpvProfile/Names");
+    }
+    getNpvProfile(id) {
+        return this.http.get(this.url + "/NpvProfile/" + id);
+    }
+    addNpvProfile(np) {
+        let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
+            .append("name", np.name);
+        return this.http.post(this.url + "/NpvProfile", np, { params: params });
+    }
+    updateNpvProfile(np) {
+        return this.http.put(this.url + "/NpvProfile", np);
     }
     /**
       * Handle Http operation that failed.
       * Let the app continue.
       * @param operation - name of the operation that failed
-      * @param result - optional value to return as the observable result
+      * @param result - optional value to return as the observable resultl8'[pk;'
+      * ]
     */
     handleError(operation = 'operation', result) {
         return (error) => {
@@ -327,14 +346,22 @@ let FormComponent = class FormComponent {
         this.data.obsNpvProfile.subscribe(np => this.npvProfile = np);
     }
     onCalculate() {
-        //console.log(this.npvProfile);
         this.data.computeNpvProfiles(this.npvProfile).subscribe((data) => {
-            //console.log(data);
+            // computeNpvProfiles model do not have id and name props
+            // copy id and name from current NpvProfile 
+            data.id = this.npvProfile.id;
+            data.name = this.npvProfile.name;
             this.data.syncCurrentNpvProfile(data);
         });
     }
     addCashFlow() {
         this.npvProfile.values.push(null);
+    }
+    removeCashFlow(i) {
+        this.npvProfile.values.splice(i, 1);
+    }
+    trackByFn(index, item) {
+        return index;
     }
 };
 FormComponent.ctorParameters = () => [
@@ -347,6 +374,107 @@ FormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [__webpack_require__(/*! ./form.component.scss */ "./app/form/form.component.scss")]
     })
 ], FormComponent);
+
+
+
+/***/ }),
+
+/***/ "./app/list/list.component.scss":
+/*!**************************************!*\
+  !*** ./app/list/list.component.scss ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "div.list {\n  display: -webkit-box;\n  display: flex;\n}\ndiv.list > div {\n  width: 50%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIk5nQXBwL2FwcC9saXN0L1Q6XFxQcm9qZWN0c1xcVmlzdWFsUmlza1xcV2ViQXBwL05nQXBwXFxhcHBcXGxpc3RcXGxpc3QuY29tcG9uZW50LnNjc3MiLCJOZ0FwcC9hcHAvbGlzdC9saXN0LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksb0JBQUE7RUFBQSxhQUFBO0FDQ0o7QURNQTtFQUNJLFVBQUE7QUNKSiIsImZpbGUiOiJOZ0FwcC9hcHAvbGlzdC9saXN0LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiZGl2Lmxpc3QgeyAgICBcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcblxyXG4gICAgLnNlbGVjdCB7XHJcbiAgICAgICAgXHJcbiAgICB9XHJcbn1cclxuXHJcbmRpdi5saXN0ID4gZGl2IHtcclxuICAgIHdpZHRoOiA1MCU7XHJcbn0iLCJkaXYubGlzdCB7XG4gIGRpc3BsYXk6IGZsZXg7XG59XG5kaXYubGlzdCA+IGRpdiB7XG4gIHdpZHRoOiA1MCU7XG59Il19 */"
+
+/***/ }),
+
+/***/ "./app/list/list.component.ts":
+/*!************************************!*\
+  !*** ./app/list/list.component.ts ***!
+  \************************************/
+/*! exports provided: ListComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListComponent", function() { return ListComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "../node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
+/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data.service */ "./app/data.service.ts");
+/* harmony import */ var _data_npvProfile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../data/npvProfile */ "./app/data/npvProfile.ts");
+
+
+
+
+
+let ListComponent = class ListComponent {
+    constructor(data, modalService) {
+        this.data = data;
+        this.modalService = modalService;
+        this.data.obsNpvProfile.subscribe(np => this.npvProfile = np);
+    }
+    ngOnInit() {
+        this.data.getSavedNpvProfiles().subscribe((data) => {
+            // TODO: sort list
+            this.npvProfileList = data;
+        });
+    }
+    onProfileSelected(value) {
+        this.data.getNpvProfile(value.id).subscribe((data) => {
+            this.data.syncCurrentNpvProfile(data);
+        });
+    }
+    onSave() {
+        if (this.npvProfile.id) {
+            // to UPDATE
+            this.data.updateNpvProfile(this.npvProfile).subscribe((data) => {
+                // TODO: show success message
+            });
+        }
+        else {
+            this.openSaveModal();
+        }
+    }
+    onNew() {
+        this.data.syncCurrentNpvProfile(new _data_npvProfile__WEBPACK_IMPORTED_MODULE_4__["NpvProfile"]());
+        this.selectedNpvProfile = null;
+    }
+    openSaveModal() {
+        this.newNpvProfileName = "";
+        this.modalService.open(this.content, { ariaLabelledBy: 'modal-basic-title', backdrop: 'static' }).result.then((result) => {
+            if (result == "ok") {
+                this.saveNewProfile();
+            }
+        }, (reason) => { });
+    }
+    saveNewProfile() {
+        // to INSERT
+        this.npvProfile.name = this.newNpvProfileName;
+        this.data.addNpvProfile(this.npvProfile).subscribe((data) => {
+            this.npvProfile.id = data.id;
+            this.data.syncCurrentNpvProfile(this.npvProfile);
+            this.npvProfileList.push(data);
+            // TODO: re-sort list
+        });
+    }
+};
+ListComponent.ctorParameters = () => [
+    { type: _data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"] },
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('content', { static: false })
+], ListComponent.prototype, "content", void 0);
+ListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'npv-list',
+        template: __webpack_require__(/*! raw-loader!./list.component.html */ "../node_modules/raw-loader/index.js!./app/list/list.component.html"),
+        styles: [__webpack_require__(/*! ./list.component.scss */ "./app/list/list.component.scss")]
+    })
+], ListComponent);
 
 
 

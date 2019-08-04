@@ -15,13 +15,16 @@ export class FormComponent {
     }
 
     ngOnInit() {
-        this.data.obsNpvProfile.subscribe(np => this.npvProfile = np);        
+        this.data.obsNpvProfile.subscribe(np => this.npvProfile = np);
     }
 
     onCalculate() {
-        //console.log(this.npvProfile);
         this.data.computeNpvProfiles(this.npvProfile).subscribe((data) => {
-            //console.log(data);
+            // computeNpvProfiles model do not have id and name props
+            // copy id and name from current NpvProfile 
+            data.id = this.npvProfile.id;
+            data.name = this.npvProfile.name;
+
             this.data.syncCurrentNpvProfile(data);
         });
     }
@@ -30,7 +33,11 @@ export class FormComponent {
         this.npvProfile.values.push(null);
     }
 
-    //removeCashFlow(i: number) {
-    //    this.npvProfile.values.splice(i, 1);
-    //}
+    removeCashFlow(i: number) {
+        this.npvProfile.values.splice(i, 1);
+    }
+
+    trackByFn(index: any, item: any) {
+        return index;
+    }
 }

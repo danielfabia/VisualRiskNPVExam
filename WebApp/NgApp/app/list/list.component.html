@@ -1,0 +1,34 @@
+﻿<div class="list">
+    <div class="new form-group">
+        <button (click)="onSave()" type="button" class="btn btn-primary btn-sm" style="width:20%">Save</button>
+        <button (click)="onNew()" type="button" class="btn btn-secondary btn-sm" style="margin-left:10px;">New</button>
+    </div>
+    <div class="select form-group row">
+        <label for="npvProfileList" class="col-form-label col-sm-5" style="text-align: right">Load Saved Profile</label>
+        <select [(ngModel)]="selectedNpvProfile" (ngModelChange)="onProfileSelected($event)" id="npvProfileList" name="npvProfileList" class="form-control col-sm-5">
+            <option *ngFor="let n of npvProfileList" [ngValue]="n">{{n.name}}</option>
+        </select>
+    </div>
+</div>
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Save</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('x')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <div class="input-group">
+                    <input [(ngModel)]="newNpvProfileName" id="name" class="form-control" placeholder="Name of NPV Profile" name="name" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('ok')">Ok</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('cancel')">Cancel</button>
+    </div>
+</ng-template>

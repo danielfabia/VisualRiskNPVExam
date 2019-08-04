@@ -10,6 +10,8 @@
     <None Remove="NgApp\app\data\npvProfile.ts" />
     <None Remove="NgApp\app\data\profile.ts" />
     <None Remove="NgApp\app\form\form.component.ts" />
+    <None Remove="NgApp\app\list\list.component.html" />
+    <None Remove="NgApp\app\list\list.component.ts" />
     <None Remove="NgApp\app\npv-table\npv.table.component.html" />
     <None Remove="NgApp\app\npv-table\npv.table.component.ts" />
   </ItemGroup>
@@ -29,6 +31,8 @@
     <TypeScriptCompile Include="NgApp\app\data\npvProfile.ts" />
     <TypeScriptCompile Include="NgApp\app\data\profile.ts" />
     <TypeScriptCompile Include="NgApp\app\form\form.component.ts" />
+    <TypeScriptCompile Include="NgApp\app\list\list.component.ts" />
+    <TypeScriptCompile Include="NgApp\app\list\list.component.html" />
     <TypeScriptCompile Include="NgApp\app\npv-table\npv.table.component.html" />
     <TypeScriptCompile Include="NgApp\app\npv-table\npv.table.component.ts" />
   </ItemGroup>

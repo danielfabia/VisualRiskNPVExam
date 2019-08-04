@@ -26,7 +26,7 @@
     <div class="form-group row">
         <label for="" class="col-sm-3 col-form-label">Cash Flows</label>
         <div class="col-sm-5">
-            <div class="form-group" *ngFor="let c of npvProfile.values; let i = index">
+            <div class="form-group" *ngFor="let c of npvProfile.values; let i = index; trackBy:trackByFn">
                 <input [(ngModel)]="npvProfile.values[i]" type="number" name="values{{i}}" class="form-control form-control-sm" />
                 <button type="button" class="btn btn-secondary btn-sm" (click)="removeCashFlow(i)" title="Delete Cash Flow">-</button>
                 <!--<i class="fa fa-minus-square"></i>-->

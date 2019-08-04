@@ -16,21 +16,12 @@ export class DataService {
 
     constructor(private http: HttpClient) {
         let npvProfile = new NpvProfile();
-        npvProfile.initialCost = 10000;
-        npvProfile.upperBoundRate = 2.00;
-        npvProfile.lowerBoundRate = 1.00;
-        npvProfile.rateIncrement = 0.25;
-        //npvProfile.values.push(1000);
-        //npvProfile.values.push(2000);
-        //npvProfile.values.push(3000);
-        //npvProfile.values.push(1000);
-        //npvProfile.values.push(5000);
-        //npvProfile.values.push(3000);
-        //npvProfile.values.push(1000);
-        //npvProfile.values.push(2000);
-        //npvProfile.values.push(3000);
 
         this.syncCurrentNpvProfile(npvProfile);
+    }
+
+    syncCurrentNpvProfile(np: NpvProfile) {
+        this.npvProfileShared.next(np);
     }
 
     computeNpvProfiles(np: NpvProfile): Observable<NpvProfile> {
@@ -44,15 +35,31 @@ export class DataService {
         return this.http.get<NpvProfile>(this.url + "/Compute/npv-profile", { params: params });
     }
 
-    syncCurrentNpvProfile(np: NpvProfile) {
-        this.npvProfileShared.next(np);
+    getSavedNpvProfiles(): Observable<NpvProfile[]> {
+        return this.http.get<NpvProfile[]>(this.url + "/NpvProfile/Names");
+    }
+
+    getNpvProfile(id: number): Observable<NpvProfile> {
+        return this.http.get<NpvProfile>(this.url + "/NpvProfile/" + id);
+    }
+
+    addNpvProfile(np: NpvProfile): Observable<NpvProfile> {
+        let params = new HttpParams()
+            .append("name", np.name);
+
+        return this.http.post<NpvProfile>(this.url + "/NpvProfile", np, { params: params });
+    }
+
+    updateNpvProfile(np: NpvProfile): Observable<NpvProfile> {
+        return this.http.put<NpvProfile>(this.url + "/NpvProfile", np);
     }
 
     /**
       * Handle Http operation that failed.
       * Let the app continue.
       * @param operation - name of the operation that failed
-      * @param result - optional value to return as the observable result
+      * @param result - optional value to return as the observable resultl8'[pk;'
+      * ]
     */
     private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {

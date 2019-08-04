@@ -3,8 +3,6 @@
   "name": "asp.net",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.3.0",
-    "jquery": "^3.4.0",
     "@angular/animations": "~8.1.2",
     "@angular/common": "~8.1.2",
     "@angular/compiler": "~8.1.2",
@@ -13,6 +11,9 @@
     "@angular/platform-browser": "~8.1.2",
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
+    "@ng-bootstrap/ng-bootstrap": "^5.1.0",
+    "bootstrap": "^4.3.0",
+    "jquery": "^3.4.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"

@@ -11,10 +11,10 @@ let DataService = class DataService {
         this.npvProfileShared = new BehaviorSubject(new NpvProfile());
         this.obsNpvProfile = this.npvProfileShared.asObservable();
         let npvProfile = new NpvProfile();
-        npvProfile.initialCost = 10000;
-        npvProfile.upperBoundRate = 2.00;
-        npvProfile.lowerBoundRate = 1.00;
-        npvProfile.rateIncrement = 0.25;
+        //npvProfile.initialCost = 10000;
+        //npvProfile.upperBoundRate = 2.00;
+        //npvProfile.lowerBoundRate = 1.00;
+        //npvProfile.rateIncrement = 0.25;
         //npvProfile.values.push(1000);
         //npvProfile.values.push(2000);
         //npvProfile.values.push(3000);
@@ -26,6 +26,9 @@ let DataService = class DataService {
         //npvProfile.values.push(3000);
         this.syncCurrentNpvProfile(npvProfile);
     }
+    syncCurrentNpvProfile(np) {
+        this.npvProfileShared.next(np);
+    }
     computeNpvProfiles(np) {
         let params = new HttpParams()
             .append("InitialCost", np.initialCost.toString())
@@ -35,14 +38,21 @@ let DataService = class DataService {
         np.values.forEach((v) => { params = params.append("Values", v.toString()); });
         return this.http.get(this.url + "/Compute/npv-profile", { params: params });
     }
-    syncCurrentNpvProfile(np) {
-        this.npvProfileShared.next(np);
+    getSavedNpvProfiles() {
+        return this.http.get(this.url + "/NpvProfile/Names");
+    }
+    getNpvProfile(id) {
+        return this.http.get(this.url + "/NpvProfile/" + id);
+    }
+    updateNpvProfile(np) {
+        return this.http.put(this.url + "/NpvProfile", np);
     }
     /**
       * Handle Http operation that failed.
       * Let the app continue.
       * @param operation - name of the operation that failed
-      * @param result - optional value to return as the observable result
+      * @param result - optional value to return as the observable resultl8'[pk;'
+      * ]
     */
     handleError(operation = 'operation', result) {
         return (error) => {

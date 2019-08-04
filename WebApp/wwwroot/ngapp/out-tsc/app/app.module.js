@@ -8,6 +8,7 @@ import { DataService } from './data.service';
 import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
 import { NpvTableComponent } from './npv-table/npv.table.component';
+import { ListComponent } from './list/list.component';
 let AppModule = class AppModule {
 };
 AppModule = tslib_1.__decorate([
@@ -15,7 +16,8 @@ AppModule = tslib_1.__decorate([
         declarations: [
             AppComponent,
             FormComponent,
-            NpvTableComponent
+            NpvTableComponent,
+            ListComponent
         ],
         imports: [
             BrowserModule,

@@ -8,14 +8,17 @@ let FormComponent = class FormComponent {
         this.data.obsNpvProfile.subscribe(np => this.npvProfile = np);
     }
     onCalculate() {
-        //console.log(this.npvProfile);
+        console.log(this.npvProfile);
         this.data.computeNpvProfiles(this.npvProfile).subscribe((data) => {
-            //console.log(data);
             this.data.syncCurrentNpvProfile(data);
+            console.log(data);
         });
     }
     addCashFlow() {
         this.npvProfile.values.push(null);
+    }
+    removeCashFlow(i) {
+        this.npvProfile.values.splice(i, 1);
     }
 };
 FormComponent = tslib_1.__decorate([
