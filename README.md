@@ -22,5 +22,5 @@ The Angular app is integrated into the WebApp project.
 
 Run "npm install" to download packages.
 
-Run "ng build" --watch to re-build.
+Run "ng build --watch" to re-build.
 
