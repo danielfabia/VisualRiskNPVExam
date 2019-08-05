@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { AppRoutingModule } from './app-routing.module';
 import { DataService } from './data.service';
@@ -23,7 +24,8 @@ import { ListComponent } from './list/list.component';
         AppRoutingModule,
         FormsModule,
         HttpClientModule,
-        NgbModule
+        NgbModule,
+        NgxSpinnerModule    
     ],
     providers: [
         DataService

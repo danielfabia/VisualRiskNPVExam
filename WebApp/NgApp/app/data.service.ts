@@ -1,7 +1,8 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, of, BehaviorSubject } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { Observable, of, BehaviorSubject, throwError } from 'rxjs';
+//import { catchError, map, tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { environment } from '../environments/environment';
 import { NpvProfile } from './data/npvProfile';
 
@@ -26,49 +27,73 @@ export class DataService {
 
     computeNpvProfiles(np: NpvProfile): Observable<NpvProfile> {
         let params = new HttpParams()
-            .append("InitialCost", np.initialCost.toString())
-            .append("UpperBoundRate", np.upperBoundRate.toString())
-            .append("LowerBoundRate", np.lowerBoundRate.toLocaleString())
-            .append("RateIncrement", np.rateIncrement.toString());
-        np.values.forEach((v: Number) => { params = params.append("Values", v.toString()); });
+            .append("InitialCost", np.initialCost ? np.initialCost.toString() : null)
+            .append("UpperBoundRate", np.upperBoundRate ? np.upperBoundRate.toString() : null)
+            .append("LowerBoundRate", np.lowerBoundRate ? np.lowerBoundRate.toLocaleString() : null)
+            .append("RateIncrement", np.rateIncrement ? np.rateIncrement.toString() : null);
+        np.values.forEach((v: Number) => { params = params.append("Values", v ? v.toString() : null); });
 
-        return this.http.get<NpvProfile>(this.url + "/Compute/npv-profile", { params: params });
+        return this.http.get<NpvProfile>(this.url + "/Compute/npv-profile", { params: params })
+            .pipe(
+                catchError(this.handleError)
+            );
     }
 
     getSavedNpvProfiles(): Observable<NpvProfile[]> {
-        return this.http.get<NpvProfile[]>(this.url + "/NpvProfile/Names");
+        return this.http.get<NpvProfile[]>(this.url + "/NpvProfile/Names")
+            .pipe(
+                catchError(this.handleError)
+            );
     }
 
     getNpvProfile(id: number): Observable<NpvProfile> {
-        return this.http.get<NpvProfile>(this.url + "/NpvProfile/" + id);
+        return this.http.get<NpvProfile>(this.url + "/NpvProfile/" + id)
+            .pipe(
+                catchError(this.handleError)
+            );
     }
 
     addNpvProfile(np: NpvProfile): Observable<NpvProfile> {
-        let params = new HttpParams()
-            .append("name", np.name);
-
-        return this.http.post<NpvProfile>(this.url + "/NpvProfile", np, { params: params });
+        return this.http.post<NpvProfile>(this.url + "/NpvProfile", np)
+            .pipe(
+                catchError(this.handleError)
+            );
     }
 
     updateNpvProfile(np: NpvProfile): Observable<NpvProfile> {
-        return this.http.put<NpvProfile>(this.url + "/NpvProfile", np);
+        return this.http.put<NpvProfile>(this.url + "/NpvProfile", np)
+            .pipe(
+                catchError(this.handleError)
+            );
     }
 
-    /**
-      * Handle Http operation that failed.
-      * Let the app continue.
-      * @param operation - name of the operation that failed
-      * @param result - optional value to return as the observable resultl8'[pk;'
-      * ]
-    */
-    private handleError<T>(operation = 'operation', result?: T) {
-        return (error: any): Observable<T> => {
+    private handleError(error) {
+        console.log(error); // log to console 
 
-            // TODO: send the error to remote logging infrastructure
-            console.error(error); // log to console instead
+        let errorMessage = '';
+        if (error.error instanceof ErrorEvent) {
+            // client-side error
+            errorMessage = `Error: ${error.error.message}`;
+        } else {
+            // server-side error
+            
+            if (error.status == 400) {
+                if (typeof error.error == "string")
+                    errorMessage = error.error;
+                else {
+                    // parse the ModelState json
+                    var errors = [];
+                    for (let p in error.error) {
+                        errors.push(...error.error[p]);
+                    }
 
-            // Let the app keep running by returning an empty result.
-            return of(result as T);
-        };
+                    errorMessage = `Errors:\n${errors.join("\n")}`;
+                }
+            }
+            else
+                errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        }
+        
+        return throwError(errorMessage);
     }
 }

@@ -16,9 +16,6 @@ namespace WebApi.Models
             CreateMap<RateNpv, ProfileModel>()
                 .ReverseMap();
 
-            //CreateMap<decimal[], ICollection<CashFlow>>()
-            //    .ForMember(dest => dest, src => src.MapFrom(value => value.Select(_ => new CashFlow { Value = _ }).ToList()));
-
             CreateMap<NpvProfile, NpvProfileModel>()
                 .ForMember(dest => dest.Values, src => src.MapFrom(n => n.CashFlows.Select(_ => _.Value).ToArray()))
                 .ForMember(dest => dest.Profiles, src => src.MapFrom(n => n.NPVs))                
@@ -37,6 +34,14 @@ namespace WebApi.Models
 
             CreateMap<NpvProfile, NpvProfileNameModel>()
                 .ReverseMap();
+
+            CreateMap<NpvProfile, NpvProfileAddRequestModel>()
+                .ForMember(dest => dest.Values, src => src.MapFrom(n => n.CashFlows.Select(_ => _.Value).ToArray()))
+                .ForMember(dest => dest.Profiles, src => src.MapFrom(n => n.NPVs))
+                .ReverseMap();
+            CreateMap<NpvProfileAddRequestModel, NpvProfile>()
+                .ForMember(dest => dest.CashFlows, src => src.MapFrom(n => n.Values.Select(_ => new CashFlow { Value = _ }).ToList()))
+                .ForMember(dest => dest.NPVs, src => src.MapFrom(n => n.Profiles));
         }
     }
 }

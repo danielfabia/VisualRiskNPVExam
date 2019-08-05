@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "../$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>    \r\n    <npv-list></npv-list>\r\n    <npv-form></npv-form>\r\n    <br/>\r\n</div>"
+module.exports = "<div>    \r\n    <npv-list></npv-list>\r\n    <npv-form></npv-form>\r\n    <br/>\r\n</div>\r\n<ngx-spinner></ngx-spinner>"
 
 /***/ }),
 
@@ -162,12 +162,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "../node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "../node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "../node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app-routing.module */ "./app/app-routing.module.ts");
-/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./data.service */ "./app/data.service.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./app/app.component.ts");
-/* harmony import */ var _form_form_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./form/form.component */ "./app/form/form.component.ts");
-/* harmony import */ var _npv_table_npv_table_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./npv-table/npv.table.component */ "./app/npv-table/npv.table.component.ts");
-/* harmony import */ var _list_list_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./list/list.component */ "./app/list/list.component.ts");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-spinner */ "../node_modules/ngx-spinner/fesm2015/ngx-spinner.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app-routing.module */ "./app/app-routing.module.ts");
+/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./data.service */ "./app/data.service.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.component */ "./app/app.component.ts");
+/* harmony import */ var _form_form_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./form/form.component */ "./app/form/form.component.ts");
+/* harmony import */ var _npv_table_npv_table_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./npv-table/npv.table.component */ "./app/npv-table/npv.table.component.ts");
+/* harmony import */ var _list_list_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./list/list.component */ "./app/list/list.component.ts");
+
 
 
 
@@ -185,22 +187,23 @@ let AppModule = class AppModule {
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
         declarations: [
-            _app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
-            _form_form_component__WEBPACK_IMPORTED_MODULE_9__["FormComponent"],
-            _npv_table_npv_table_component__WEBPACK_IMPORTED_MODULE_10__["NpvTableComponent"],
-            _list_list_component__WEBPACK_IMPORTED_MODULE_11__["ListComponent"]
+            _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"],
+            _form_form_component__WEBPACK_IMPORTED_MODULE_10__["FormComponent"],
+            _npv_table_npv_table_component__WEBPACK_IMPORTED_MODULE_11__["NpvTableComponent"],
+            _list_list_component__WEBPACK_IMPORTED_MODULE_12__["ListComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-            _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
-            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModule"]
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModule"],
+            ngx_spinner__WEBPACK_IMPORTED_MODULE_6__["NgxSpinnerModule"]
         ],
         providers: [
-            _data_service__WEBPACK_IMPORTED_MODULE_7__["DataService"]
+            _data_service__WEBPACK_IMPORTED_MODULE_8__["DataService"]
         ],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]]
     })
 ], AppModule);
 
@@ -222,21 +225,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "../node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "../node_modules/rxjs/_esm2015/index.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../environments/environment */ "./environments/environment.ts");
-/* harmony import */ var _data_npvProfile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./data/npvProfile */ "./app/data/npvProfile.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "../node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../environments/environment */ "./environments/environment.ts");
+/* harmony import */ var _data_npvProfile__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./data/npvProfile */ "./app/data/npvProfile.ts");
 
 
 
+
+//import { catchError, map, tap } from 'rxjs/operators';
 
 
 
 let DataService = class DataService {
     constructor(http) {
         this.http = http;
-        this.url = _environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].apiBaseUrl;
-        this.npvProfileShared = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](new _data_npvProfile__WEBPACK_IMPORTED_MODULE_5__["NpvProfile"]());
+        this.url = _environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].apiBaseUrl;
+        this.npvProfileShared = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](new _data_npvProfile__WEBPACK_IMPORTED_MODULE_6__["NpvProfile"]());
         this.obsNpvProfile = this.npvProfileShared.asObservable();
-        let npvProfile = new _data_npvProfile__WEBPACK_IMPORTED_MODULE_5__["NpvProfile"]();
+        let npvProfile = new _data_npvProfile__WEBPACK_IMPORTED_MODULE_6__["NpvProfile"]();
         this.syncCurrentNpvProfile(npvProfile);
     }
     syncCurrentNpvProfile(np) {
@@ -244,41 +250,55 @@ let DataService = class DataService {
     }
     computeNpvProfiles(np) {
         let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
-            .append("InitialCost", np.initialCost.toString())
-            .append("UpperBoundRate", np.upperBoundRate.toString())
-            .append("LowerBoundRate", np.lowerBoundRate.toLocaleString())
-            .append("RateIncrement", np.rateIncrement.toString());
-        np.values.forEach((v) => { params = params.append("Values", v.toString()); });
-        return this.http.get(this.url + "/Compute/npv-profile", { params: params });
+            .append("InitialCost", np.initialCost ? np.initialCost.toString() : null)
+            .append("UpperBoundRate", np.upperBoundRate ? np.upperBoundRate.toString() : null)
+            .append("LowerBoundRate", np.lowerBoundRate ? np.lowerBoundRate.toLocaleString() : null)
+            .append("RateIncrement", np.rateIncrement ? np.rateIncrement.toString() : null);
+        np.values.forEach((v) => { params = params.append("Values", v ? v.toString() : null); });
+        return this.http.get(this.url + "/Compute/npv-profile", { params: params })
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     }
     getSavedNpvProfiles() {
-        return this.http.get(this.url + "/NpvProfile/Names");
+        return this.http.get(this.url + "/NpvProfile/Names")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     }
     getNpvProfile(id) {
-        return this.http.get(this.url + "/NpvProfile/" + id);
+        return this.http.get(this.url + "/NpvProfile/" + id)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     }
     addNpvProfile(np) {
-        let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]()
-            .append("name", np.name);
-        return this.http.post(this.url + "/NpvProfile", np, { params: params });
+        return this.http.post(this.url + "/NpvProfile", np)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     }
     updateNpvProfile(np) {
-        return this.http.put(this.url + "/NpvProfile", np);
+        return this.http.put(this.url + "/NpvProfile", np)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     }
-    /**
-      * Handle Http operation that failed.
-      * Let the app continue.
-      * @param operation - name of the operation that failed
-      * @param result - optional value to return as the observable resultl8'[pk;'
-      * ]
-    */
-    handleError(operation = 'operation', result) {
-        return (error) => {
-            // TODO: send the error to remote logging infrastructure
-            console.error(error); // log to console instead
-            // Let the app keep running by returning an empty result.
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(result);
-        };
+    handleError(error) {
+        console.log(error); // log to console 
+        let errorMessage = '';
+        if (error.error instanceof ErrorEvent) {
+            // client-side error
+            errorMessage = `Error: ${error.error.message}`;
+        }
+        else {
+            // server-side error
+            if (error.status == 400) {
+                if (typeof error.error == "string")
+                    errorMessage = error.error;
+                else {
+                    // parse the ModelState json
+                    var errors = [];
+                    for (let p in error.error) {
+                        errors.push(...error.error[p]);
+                    }
+                    errorMessage = `Errors:\n${errors.join("\n")}`;
+                }
+            }
+            else
+                errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        }
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(errorMessage);
     }
 };
 DataService.ctorParameters = () => [
@@ -334,28 +354,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormComponent", function() { return FormComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data.service */ "./app/data.service.ts");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-spinner */ "../node_modules/ngx-spinner/fesm2015/ngx-spinner.js");
+/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data.service */ "./app/data.service.ts");
+
 
 
 
 let FormComponent = class FormComponent {
-    constructor(data) {
+    constructor(data, spinner) {
         this.data = data;
+        this.spinner = spinner;
     }
     ngOnInit() {
         this.data.obsNpvProfile.subscribe(np => this.npvProfile = np);
     }
     onCalculate() {
+        this.spinner.show();
         this.data.computeNpvProfiles(this.npvProfile).subscribe((data) => {
             // computeNpvProfiles model do not have id and name props
             // copy id and name from current NpvProfile 
             data.id = this.npvProfile.id;
             data.name = this.npvProfile.name;
             this.data.syncCurrentNpvProfile(data);
+            this.spinner.hide();
+        }, (error) => {
+            this.spinner.hide();
+            window.alert(error); // TODO: replace with MessageBox component
         });
     }
     addCashFlow() {
         this.npvProfile.values.push(null);
+        // TODO: focus to new field
     }
     removeCashFlow(i) {
         this.npvProfile.values.splice(i, 1);
@@ -365,7 +394,8 @@ let FormComponent = class FormComponent {
     }
 };
 FormComponent.ctorParameters = () => [
-    { type: _data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"] }
+    { type: _data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"] },
+    { type: ngx_spinner__WEBPACK_IMPORTED_MODULE_2__["NgxSpinnerService"] }
 ];
 FormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -403,35 +433,53 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "../node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "../node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "../node_modules/@ng-bootstrap/ng-bootstrap/fesm2015/ng-bootstrap.js");
-/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../data.service */ "./app/data.service.ts");
-/* harmony import */ var _data_npvProfile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../data/npvProfile */ "./app/data/npvProfile.ts");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-spinner */ "../node_modules/ngx-spinner/fesm2015/ngx-spinner.js");
+/* harmony import */ var _data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../data.service */ "./app/data.service.ts");
+/* harmony import */ var _data_npvProfile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../data/npvProfile */ "./app/data/npvProfile.ts");
+
 
 
 
 
 
 let ListComponent = class ListComponent {
-    constructor(data, modalService) {
+    constructor(data, modalService, spinner) {
         this.data = data;
         this.modalService = modalService;
+        this.spinner = spinner;
         this.data.obsNpvProfile.subscribe(np => this.npvProfile = np);
     }
     ngOnInit() {
+        this.spinner.show();
         this.data.getSavedNpvProfiles().subscribe((data) => {
             // TODO: sort list
             this.npvProfileList = data;
+            this.spinner.hide();
+        }, (error) => {
+            this.spinner.hide();
+            window.alert(error); // TODO: replace with MessageBox component
         });
     }
     onProfileSelected(value) {
+        this.spinner.show();
         this.data.getNpvProfile(value.id).subscribe((data) => {
             this.data.syncCurrentNpvProfile(data);
+            this.spinner.hide();
+        }, (error) => {
+            this.spinner.hide();
+            window.alert(error); // TODO: replace with MessageBox component
         });
     }
     onSave() {
         if (this.npvProfile.id) {
+            this.spinner.show();
             // to UPDATE
             this.data.updateNpvProfile(this.npvProfile).subscribe((data) => {
-                // TODO: show success message
+                this.spinner.hide();
+                window.alert("Profile successfully saved");
+            }, (error) => {
+                this.spinner.hide();
+                window.alert(error); // TODO: replace with MessageBox component
             });
         }
         else {
@@ -439,7 +487,7 @@ let ListComponent = class ListComponent {
         }
     }
     onNew() {
-        this.data.syncCurrentNpvProfile(new _data_npvProfile__WEBPACK_IMPORTED_MODULE_4__["NpvProfile"]());
+        this.data.syncCurrentNpvProfile(new _data_npvProfile__WEBPACK_IMPORTED_MODULE_5__["NpvProfile"]());
         this.selectedNpvProfile = null;
     }
     openSaveModal() {
@@ -453,17 +501,24 @@ let ListComponent = class ListComponent {
     saveNewProfile() {
         // to INSERT
         this.npvProfile.name = this.newNpvProfileName;
+        this.spinner.show();
         this.data.addNpvProfile(this.npvProfile).subscribe((data) => {
             this.npvProfile.id = data.id;
             this.data.syncCurrentNpvProfile(this.npvProfile);
             this.npvProfileList.push(data);
             // TODO: re-sort list
+            this.spinner.hide();
+            window.alert("Profile successfully saved");
+        }, (error) => {
+            this.spinner.hide();
+            window.alert(error); // TODO: replace with MessageBox component
         });
     }
 };
 ListComponent.ctorParameters = () => [
-    { type: _data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"] },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] }
+    { type: _data_service__WEBPACK_IMPORTED_MODULE_4__["DataService"] },
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModal"] },
+    { type: ngx_spinner__WEBPACK_IMPORTED_MODULE_3__["NgxSpinnerService"] }
 ];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('content', { static: false })

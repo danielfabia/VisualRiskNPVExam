@@ -42,7 +42,7 @@
             API for saving NPV Profile data
             </summary>
         </member>
-        <member name="M:WebApi.Controllers.NpvProfileController.#ctor(Repository.INpvProfileRepository,AutoMapper.IMapper)">
+        <member name="M:WebApi.Controllers.NpvProfileController.#ctor(Repository.INpvProfileRepository,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{WebApi.Controllers.NpvProfileController})">
             <summary>
             Constructor
             </summary>
@@ -88,6 +88,11 @@
         <member name="P:WebApi.Models.NpvProfileAddRequestModel.Name">
             <summary>
             Name of the saved NpvProfile
+            </summary>
+        </member>
+        <member name="P:WebApi.Models.NpvProfileAddRequestModel.Profiles">
+            <summary>
+            List of NPV Profiles
             </summary>
         </member>
         <member name="T:WebApi.Models.NpvProfileModel">

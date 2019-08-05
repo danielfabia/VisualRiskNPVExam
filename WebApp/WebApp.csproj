@@ -12,6 +12,8 @@
     <None Remove="NgApp\app\form\form.component.ts" />
     <None Remove="NgApp\app\list\list.component.html" />
     <None Remove="NgApp\app\list\list.component.ts" />
+    <None Remove="NgApp\app\messagebox\messagebox.component.html" />
+    <None Remove="NgApp\app\messagebox\messagebox.component.ts" />
     <None Remove="NgApp\app\npv-table\npv.table.component.html" />
     <None Remove="NgApp\app\npv-table\npv.table.component.ts" />
   </ItemGroup>
@@ -33,6 +35,8 @@
     <TypeScriptCompile Include="NgApp\app\form\form.component.ts" />
     <TypeScriptCompile Include="NgApp\app\list\list.component.ts" />
     <TypeScriptCompile Include="NgApp\app\list\list.component.html" />
+    <TypeScriptCompile Include="NgApp\app\messagebox\messagebox.component.html" />
+    <TypeScriptCompile Include="NgApp\app\messagebox\messagebox.component.ts" />
     <TypeScriptCompile Include="NgApp\app\npv-table\npv.table.component.html" />
     <TypeScriptCompile Include="NgApp\app\npv-table\npv.table.component.ts" />
   </ItemGroup>

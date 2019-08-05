@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from "ngx-spinner";
 import { AppRoutingModule } from './app-routing.module';
 import { DataService } from './data.service';
 import { AppComponent } from './app.component';
@@ -23,7 +25,9 @@ AppModule = tslib_1.__decorate([
             BrowserModule,
             AppRoutingModule,
             FormsModule,
-            HttpClientModule
+            HttpClientModule,
+            NgbModule,
+            NgxSpinnerModule
         ],
         providers: [
             DataService

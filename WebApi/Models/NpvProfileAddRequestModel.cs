@@ -16,5 +16,9 @@ namespace WebApi.Models
         /// </summary>
         [Required]
         public string Name { get; set; }
+        /// <summary>
+        /// List of NPV Profiles
+        /// </summary>
+        public List<ProfileModel> Profiles { get; set; }
     }
 }

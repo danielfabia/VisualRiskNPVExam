@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Data.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -20,14 +21,16 @@ namespace WebApi.Controllers
     {
         private readonly INpvProfileRepository npvpRepository;
         private readonly IMapper mapper;
+        private readonly ILogger<NpvProfileController> logger;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public NpvProfileController(INpvProfileRepository npvpRepository, IMapper mapper)
+        public NpvProfileController(INpvProfileRepository npvpRepository, IMapper mapper, ILogger<NpvProfileController> logger)
         {
             this.npvpRepository = npvpRepository;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
         /// <summary>
@@ -119,9 +122,10 @@ namespace WebApi.Controllers
 
                 return Created("", npvProfileName);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO: log errors
+                logger.LogError(ex, "AddProfile Error", null);
+
                 return BadRequest("Failed to saved profile");
             }
         }
