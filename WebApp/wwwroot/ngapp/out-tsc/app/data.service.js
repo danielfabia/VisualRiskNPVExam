@@ -54,8 +54,7 @@ let DataService = class DataService {
         else {
             // server-side error
             if (error.status == 400) {
-                console.log(error.error instanceof String);
-                if (error.error instanceof String)
+                if (typeof error.error == "string")
                     errorMessage = error.error;
                 else {
                     // parse the ModelState json

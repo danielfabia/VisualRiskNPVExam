@@ -64,8 +64,8 @@ let ListComponent = class ListComponent {
         this.data.addNpvProfile(this.npvProfile).subscribe((data) => {
             this.npvProfile.id = data.id;
             this.data.syncCurrentNpvProfile(this.npvProfile);
-            this.npvProfileList.push(data);
-            // TODO: re-sort list
+            this.npvProfileList.push(data); // TODO: re-sort list
+            this.selectedNpvProfile = data;
             this.spinner.hide();
             window.alert("Profile successfully saved");
         }, (error) => {

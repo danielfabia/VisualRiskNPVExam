@@ -2,10 +2,17 @@
     ViewData["Title"] = "NPV Calculator";
 }
 @section Scripts {
-    <script src="~/ngapp/dist/runtime.js"></script>
-    <script src="~/ngapp/dist/polyfills.js"></script>
-    <script src="~/ngapp/dist/styles.js"></script>
-    <script src="~/ngapp/dist/vendor.js"></script>
-    <script src="~/ngapp/dist/main.js"></script>
+    <environment include="Development">
+        <script src="~/ngapp/dist/runtime.js"></script>
+        <script src="~/ngapp/dist/polyfills.js"></script>
+        <script src="~/ngapp/dist/styles.js"></script>
+        <script src="~/ngapp/dist/vendor.js"></script>
+        <script src="~/ngapp/dist/main.js"></script>
+    </environment>
+    <environment include="Production">
+        <script src="~/ngapp/dist/runtime-es2015.703a23e48ad83c851e49.js"></script>
+        <script src="~/ngapp/dist/polyfills-es2015.236bccba70d9d2860b6e.js"></script>
+        <script src="~/ngapp/dist/main-es2015.d5269c39f22f619ffe9c.js"></script>
+    </environment>
 }
 <app-root></app-root>

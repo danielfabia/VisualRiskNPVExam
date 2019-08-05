@@ -8,6 +8,8 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class MessageBoxComponent {
 
+    modalId: string;
+
     constructor(private modalService: NgbModal) {        
     }
 

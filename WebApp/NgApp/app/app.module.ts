@@ -11,13 +11,15 @@ import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
 import { NpvTableComponent } from './npv-table/npv.table.component';
 import { ListComponent } from './list/list.component';
+import { MessageBoxComponent } from './messagebox/messagebox.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         FormComponent,
         NpvTableComponent,
-        ListComponent
+        ListComponent,
+        MessageBoxComponent
     ],
     imports: [
         BrowserModule,

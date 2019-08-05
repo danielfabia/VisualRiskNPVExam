@@ -10,7 +10,7 @@ import { DataService } from '../data.service';
 })
 export class FormComponent {
 
-    private npvProfile: NpvProfile;
+    npvProfile: NpvProfile;
 
     constructor(private data: DataService, private spinner: NgxSpinnerService) {
     }
