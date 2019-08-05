@@ -3,11 +3,22 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>WebApi</AssemblyName>
+    <UserSecretsId>3df17331-3719-473e-8456-f24bf46b9c77</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>WebApi.xml</DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="WebApi.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="WebApi.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
