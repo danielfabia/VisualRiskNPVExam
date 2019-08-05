@@ -27,6 +27,7 @@ namespace WebApi.Controllers
         {
             this.mapper = mapper;
         }
+
         /// <summary>
         /// Compute Present Value (PV)
         /// </summary>
@@ -35,11 +36,9 @@ namespace WebApi.Controllers
         /// <param name="period">Number of Time</param>
         /// <returns>PV value</returns>
         [HttpGet]
-        [Route("pv")]        
+        [Route("pv")]
         public ActionResult PresentValue(decimal value, float rate, int period)
         {
-            // TODO: model validation
-
             var pv = Financial.PresentValue(value, rate / 100, period);
 
             return Ok(Math.Round(pv, 4));
@@ -54,8 +53,6 @@ namespace WebApi.Controllers
         [Route("npv")]
         public ActionResult NetPresentValue([FromQuery]NpvRequestModel request)
         {
-            // TODO: model validation
-
             var npv = Financial.NetPresentValue(request.InitialCost, request.Rate / 100, request.Values);
 
             return Ok(Math.Round(npv, 4));
@@ -70,8 +67,6 @@ namespace WebApi.Controllers
         [Route("npv-profile")]
         public ActionResult NetPresentValueProfile([FromQuery]NpvProfileRequestModel model)
         {
-            // TODO: model validation
-
             var npvProfiles = Financial.NetPresentValueProfiles(model.InitialCost, model.Values, 
                                                             model.LowerBoundRate, model.UpperBoundRate, 
                                                             model.RateIncrement);

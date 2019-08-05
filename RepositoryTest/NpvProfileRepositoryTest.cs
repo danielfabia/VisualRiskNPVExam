@@ -80,8 +80,8 @@ namespace RepositoryTest
             }
 
             Assert.IsNotNull(npvP, "npvP is null");
-            Assert.IsTrue(npvP.Id == 3, "npvP.Id is not 3");
-            Assert.AreEqual(npvP.Name == "Profile New", "Name is not equal");
+            Assert.AreEqual(3, npvP.Id, "Id is not equal");
+            Assert.AreEqual("Profile New", npvP.Name, "Name is not equal");
             Assert.IsNotNull(npvP.CashFlows, "CashFlow is null");
             Assert.IsTrue(npvP.CashFlows.Count == 1, "CashFlow count is not 1");
             Assert.IsNotNull(npvP.NPVs, "NPVs is null");
@@ -119,8 +119,8 @@ namespace RepositoryTest
             }
 
             Assert.IsNotNull(npvP, "npvP is null");
-            Assert.IsTrue(npvP.Id == 2, "npvP.Id is not 2");
-            Assert.AreEqual(npvP.Name == "Profile 2 Updated", "Name is not equal");
+            Assert.AreEqual(2, npvP.Id, "Id is not equal");
+            Assert.AreEqual("Profile 2 Updated", npvP.Name, "Name is not equal");
             Assert.IsNotNull(npvP.CashFlows, "CashFlow is null");
             Assert.IsTrue(npvP.CashFlows.Count == 1, "CashFlow count is not 1");
             Assert.IsNotNull(npvP.NPVs, "NPVs is null");

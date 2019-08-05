@@ -7,14 +7,10 @@ using System.Threading.Tasks;
 namespace WebApi.Models
 {
     /// <summary>
-    /// NpvProfileSavedModel
+    /// NpvProfileAddRequestModel
     /// </summary>
-    public class NpvProfileSavedModel : NpvProfileModel
+    public class NpvProfileAddRequestModel : NpvProfileRequestBase
     {
-        /// <summary>
-        /// Id of the saved NpvProfile
-        /// </summary>
-        public int Id { get; set; }
         /// <summary>
         /// Name of the saved NpvProfile
         /// </summary>

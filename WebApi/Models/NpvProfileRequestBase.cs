@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 namespace WebApi.Models
 {
     /// <summary>
-    /// NpvProfileModel
+    /// NpvProfileBaseModel
     /// </summary>
-    public class NpvProfileModel
+    public class NpvProfileRequestBase
     {
         /// <summary>
         /// Construtor
         /// </summary>
-        public NpvProfileModel()
+        public NpvProfileRequestBase()
         {
-            this.Profiles = new List<ProfileModel>();
         }
 
         /// <summary>
@@ -44,9 +43,5 @@ namespace WebApi.Models
         /// </summary>
         [Required]
         public float RateIncrement { get; set; }
-        /// <summary>
-        /// List of NPV Profiles
-        /// </summary>
-        public List<ProfileModel> Profiles { get; set; }
     }
 }

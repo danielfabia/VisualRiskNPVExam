@@ -126,5 +126,10 @@ namespace Repository
 
             return result;
         }
+
+        public async Task<bool> IsProfileNameExists(string newProfileName)
+        {
+            return await context.NpvProfiles.AsNoTracking().AnyAsync(n => n.Name == newProfileName);
+        }
     }
 }

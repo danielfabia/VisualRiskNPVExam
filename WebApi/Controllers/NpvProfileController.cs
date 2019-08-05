@@ -53,7 +53,7 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
-        /// Get NPV profiles by ID
+        /// Get NPV profile by ID
         /// </summary>
         /// <param name="id">Id</param>
         /// <returns>Return a single NpvProfileModel</returns>
@@ -104,18 +104,14 @@ namespace WebApi.Controllers
         /// <summary>
         /// Add new NPV profile
         /// </summary>
-        /// <param name="model">NpvProfileModel</param>
-        /// <param name="name">Name of profile</param>
+        /// <param name="model">NpvProfileAddRequestModel</param>
         /// <returns></returns>
         [HttpPost()]
-        public async Task<IActionResult> AddProfile([FromBody]NpvProfileModel model, [FromQuery]string name)
+        public async Task<IActionResult> AddProfile([FromBody]NpvProfileAddRequestModel model)
         {
-            // TODO: validation
-
             try
             {
                 var newProfile = mapper.Map<NpvProfile>(model);
-                newProfile.Name = name;
 
                 newProfile = await npvpRepository.AddAsync(newProfile);
 

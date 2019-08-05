@@ -21,5 +21,6 @@ namespace Repository
         Task<NpvProfile> GetByIdAsync(int id);
         Task<NpvProfile> AddAsync(NpvProfile newProfile);
         Task<NpvProfile> UpdateAsync(NpvProfile newProfile);
+        Task<bool> IsProfileNameExists(string newProfileName);
     }
 }
