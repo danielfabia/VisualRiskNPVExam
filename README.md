@@ -1,6 +1,6 @@
 # NPV Profile Calculator
 
-The Net Present Value (NPV) Profile Calculator calculates NPV for a given series of Cash Flows and range of Discount Rates 
+The Net Present Value (NPV) Profile Calculator calculates NPV for a given series of Cash Flows and range of Discount Rates. Developed using ASP.Net Core, Web API, Entity Framework, SQL Server and Angular.
 
 An online demo is available [here](https://vr-npv.azurewebsites.net)
 
